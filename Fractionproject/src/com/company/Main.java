@@ -1,7 +1,9 @@
 package com.company;
 import com.company.Fraction;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -63,9 +65,45 @@ public class Main {
 //    }
 //
 //
+    public static void tryListSort(){
+        Fraction[] arrQuickSort = {new Fraction(1, 2), new Fraction(1, -4),new Fraction(1, -4), new Fraction(-1, 4),new Fraction(-5, 1), new Fraction(5, 1)};
+//        Fraction[] arrInsertionSort = Arrays.copyOf(arrQuickSort, arrQuickSort.length);
+        ArrayList<Fraction> listQuickSort = new ArrayList<>();
+        ArrayList<Fraction> listInsertionSort = new ArrayList<>();
+        for (int i = 0; i < arrQuickSort.length; i++) {
+            listQuickSort.add(arrQuickSort[i]);
+            listInsertionSort.add(arrQuickSort[i]);
+        }
 
 
-    public static void main(String[] args) {
+        System.out.println("Список до сортировки:");
+        for (Fraction f : listQuickSort){
+            System.out.println(f);
+        }
+        QuickSortClass quickSortClass = new QuickSortClass();
+        quickSortClass.quickSort(listQuickSort, 0, listQuickSort.size() - 1);
+//
+
+        System.out.println("\nПосле быстрой сортировки:");
+        for (Fraction f : listQuickSort){
+            System.out.println(f);
+        }
+
+
+        InsertionSortClass insertionSortClass = new InsertionSortClass();
+        insertionSortClass.insertionSort(listInsertionSort);
+
+
+        System.out.println("\nПосле сортировки вставками:");
+        for (Fraction f : listInsertionSort){
+            System.out.println(f);
+        }
+        System.out.println("\n\n");
+
+    }
+
+
+    public static void tryArrSort(){
         Fraction[] arrQuickSort = {new Fraction(1, 2), new Fraction(1, -4),new Fraction(1, -4), new Fraction(-1, 4),new Fraction(-5, 1), new Fraction(5, 1)};
         Fraction[] arrInsertionSort = Arrays.copyOf(arrQuickSort, arrQuickSort.length);
         System.out.println("Массив до сортировки:");
@@ -90,8 +128,13 @@ public class Main {
         for (Fraction f : arrInsertionSort){
             System.out.println(f);
         }
+        System.out.println("\n\n");
+    }
 
 
+    public static void main(String[] args) {
+        tryListSort();
+        tryArrSort();
     }
 
 }
